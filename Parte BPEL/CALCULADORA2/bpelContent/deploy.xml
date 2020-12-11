@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<deploy xmlns="http://www.apache.org/ode/schemas/dd/2007/03" xmlns:Analizador.ISI="http://Analizador.ISI" xmlns:calculadora="http://calculadora" xmlns:tempuri.org="http://tempuri.org/">
+  <process name="calculadora:CalculadoraBPEL">
+    <active>true</active>
+    <retired>false</retired>
+    <process-events generate="all"/>
+    <provide partnerLink="client">
+      <service name="calculadora:CalculadoraBPELService" port="CalculadoraBPELPort"/>
+    </provide>
+    <invoke partnerLink="AnalizadorPL">
+      <service name="Analizador.ISI:AnalizadorService" port="Analizador"/>
+    </invoke>
+    <invoke partnerLink="CalculatorPL">
+      <service name="tempuri.org:Calculator" port="CalculatorSoap"/>
+    </invoke>
+  </process>
+</deploy>
